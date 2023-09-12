@@ -3,13 +3,10 @@
 #include <string>
 #include <iostream>
 #include <random>
-
+#include <sstream>
 #ifndef JSimple
 #define JSimple
-
-using string = std::string;
-template <typename T>
-using vector = std::vector<T>;
+using namespace std;
 
 void Print(string String);
 
@@ -22,9 +19,11 @@ vector<string> ReadFileToList(const string& filepath);
 string ReadFileToString(const string& filepath);
 
 template <typename T>
-void WriteToFile(const string& filename, const T& data);
+void WriteToFile(const string& filepath, const T& data);
 
-string StringListToString(vector<string> stringList);
+string ListToString(vector<string> stringList);
+
+vector<string> StringToList(string input);
 
 float RandomFloat(float min, float max);
 
@@ -33,5 +32,9 @@ int RandomInt(int min, int max);
 string ToLowerCase(string string);
 
 string ToUpperCase(string string);
+
+float CompareStringByChar(const std::string& string1, const std::string& string2); // Broken: Always returns 100.0
+
+float CompareStringByWord(const std::string& string1, const std::string& string2); // Broken: Always returns 100.0
 
 #endif
