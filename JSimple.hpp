@@ -33,8 +33,8 @@ string ToLowerCase(string string);
 
 string ToUpperCase(string string);
 
-float CompareStringByChar(const std::string& string1, const std::string& string2); // Broken: Always returns 100.0
+float CompareStringByChar(const string& string1, const string& string2); // Broken: Always returns 100.0
 
-float CompareStringByWord(const std::string& string1, const std::string& string2); // Broken: Always returns 100.0
+float CompareStringByWord(const string& string1, const string& string2); // Broken: Always returns 100.0
 
 #endif
