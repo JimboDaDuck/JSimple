@@ -193,3 +193,60 @@ The `ToUpperCase` function converts a string to uppercase.
 
 `string text = "Hello World";
 string uppercaseText = ToUpperCase(text);`
+
+----------
+
+## `string ReverseString(string Input)`
+
+The `ReverseString` function returns the Input string but reversed character wise.
+
+### Parameters
+
+-   `Input`: The string to be reversed.
+
+### Returns
+
+-   A new string with all characters reversed.
+
+### Example
+
+`string text = "Hello World";
+string reversedString = ReverseString(text);`
+
+----------
+
+## `wstring ToWideString(string Input)`
+
+The `ToWideString` function converts the string into a wide string.
+
+### Parameters
+
+-   `Input`: The string to be converted.
+
+### Returns
+
+-   A new wide string.
+
+### Example
+
+`string text = "Hello World";
+wstring WideString = ToWideString(text);`
+
+----------
+
+## `bool IsPrime(int Number)`
+
+The `IsPrime` function checks if a number is a prime.
+
+### Parameters
+
+-   `Number`: The string to be checked.
+
+### Returns
+
+-   True if the number is a prime or false if not.
+
+### Example
+
+`int Number = 1;
+bool IsPrime = IsPrime(number);`
