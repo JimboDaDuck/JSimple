@@ -15,11 +15,9 @@ string GetInput()
 string CreateInput(const string& prompt) {
     string input;
     cout << prompt;
-    cin >> input;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, input);
     return input;
 }
-
 
 vector<string> ReadFileToList(const string& filename) {
     vector<string> lines;
@@ -78,16 +76,28 @@ string ListToString(vector<string> stringList) {
     return result;
 }
 
-vector<string> StringToList(string input) {
-    vector<string> words;
-    istringstream iss(input);
-    string word;
+vector<char> StringToListChars(string Input) {
+    vector<char> Chars;
+    istringstream iss(Input);
+    char Char;
 
-    while (iss >> word) {
-        words.push_back(word);
+    while (iss >> Char) {
+        Chars.push_back(Char);
     }
 
-    return words;
+    return Chars;
+}
+
+vector<string> StringToListWords(string Input) {
+    vector<string> Words;
+    istringstream iss(Input);
+    string Word;
+
+    while (iss >> Word) {
+        Words.push_back(Word);
+    }
+
+    return Words;
 }
 
 
@@ -157,8 +167,8 @@ float CompareStringByChar(const string& string1, const string& string2) { // Bro
 }
 
 float CompareStringByWord(const string& string1, const string& string2) { // Broken: Always returns 100.0
-    vector<string> words1 = StringToList(string1);
-    vector<string> words2 = StringToList(string2);
+    vector<string> words1 = StringToListWords(string1);
+    vector<string> words2 = StringToListWords(string2);
 
     int commonWords = 0;
 
@@ -173,4 +183,36 @@ float CompareStringByWord(const string& string1, const string& string2) { // Bro
 
     float similarityPercent = (2.0f * commonWords) / (words1.size() + words2.size()) * 100.0f;
     return similarityPercent;
+}
+
+string ReverseString(string Input) {
+    string Reversed;
+
+    for (int i = Input.length() - 1; i >= 0; i--) {
+        Reversed += Input[i];
+    }
+
+    return Reversed;
+}
+
+wstring ToWideString(string Input) { // https://gist.github.com/danzek/d6a0e4a48a5439e7f808ed1497f6268e
+    vector<wchar_t> buf(Input.size());
+    use_facet<ctype<wchar_t>>(locale()).widen(Input.data(),
+        Input.data() + Input.size(),
+        buf.data());
+    return wstring(buf.data(), buf.size());
+}
+
+bool IsPrime(int Number) {
+    if (Number <= 1) {
+        return false;
+    }
+
+    for (int i = 2; i * i <= Number; i++) {
+        if (Number % i == 0) {
+            return false;
+        }
+    }
+
+    return true;
 }
